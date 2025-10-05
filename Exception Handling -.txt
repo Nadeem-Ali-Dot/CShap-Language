@@ -1,0 +1,15 @@
+Exception Handling :-
+---------------------
+>> It is an abnormal condition, that stop the normal execution of program.
+>> It is used to handle run time error.
+Note: 'Exception' is the parent class i.e used to handle all type of exception.
+----------------------------------------
+The following keyword is used to perform exception handling.
+1. try.
+>> In try block we can write the logic of your program.
+2 catch
+>> This keyword is used to handle the exception.
+3. finally
+>> This keyword muse be executed whether the exception has raised or not.
+5. throw
+>> Throw keyword throw an exception and which is handled by catch block.

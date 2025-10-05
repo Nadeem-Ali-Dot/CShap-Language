@@ -1,0 +1,142 @@
+Generic Class :-
+-----------------
+>> It is a class that deal with any data type once you define.
+>> It helps to improve type safe, performance and code-reuse.
+----------------------
+Example:-
+---------
+class Employee<T>
+{
+    public Employee(T Value) {
+
+        Console.WriteLine(Value);
+    }
+}
+-----------------------------------
+ Employee<int> emp = new Employee<int>(32342);
+ Employee<string> emp1 = new Employee<string>("Java");
+------------------------------------
+Generic Method :-
+-----------------
+ class Employee
+ {
+     public void Swap<T>(T i,T j) {
+
+         T temp;
+         temp = i;
+         i = j;
+         j = temp;
+         Console.WriteLine("i="+i+","+"j="+j);
+
+         
+     }
+ }
+---------------------------------------
+ Employee emp = new Employee();
+ emp.Swap<int>(10, 20);
+ emp.Swap<string>("First", "Second");
+-----------------------------------------
+Delegate :-
+------------
+>> It is similar to pointer in C or C++.
+>> It is a reference type variable that hold reference to a method.
+>>It is helpful for function callback.
+---------------------------------------------
+To Implement delegate you need to follow the following three steps:-
+1. Declaration.
+2.Instantiation.
+3. Invocation/Calling.
+-----------------------------
+
+delegate void doSomething(); // Declaration
+public static void print()
+{
+    Console.WriteLine("Hello Print");
+}
+
+public static void Display()
+{
+    Console.WriteLine("Hello Display");
+}
+public static void show()
+{
+    Console.WriteLine("Hello Show");
+}
+----------------------------------------------
+doSomething dcl = new doSomething(print);// Intantiation 
+doSomething dcl2 = new doSomething(Display);// Intantiation 
+doSomething dcl3 = new doSomething(show);// Intantiation 
+dcl(); // Invocation 
+dcl2(); // Invocation 
+dcl3(); // Invocation 
+
+------------------------
+Optional Parameter :-
+-----------------------
+>> Parameter should be same at the time of definition and calling the method.
+>> To overcome this problem we use the concept of optional parameter.
+---------------------------------------
+ class Employee
+ {
+     public  void getValue(int a = 10,int b=20,int c = 30)
+     {
+         Console.WriteLine(a+b+c);
+     }
+ }
+
+ Employee emp = new Employee();
+ emp.getValue(1);
+ emp.getValue(2,5);
+ emp.getValue(2,5,5);
+----------------------------------
+Named Parameter :-
+------------------
+>> Named Parameter is used to change the sequence while calling the method.
+
+Like above given method:
+
+ emp.getValue(c:2,a:5,b:5);
+-----------------------------------
+Params Parameter :-
+-------------------
+>> With the help of params you can pass n number of parameter.
+--------------
+public  void getValue(params int[] a)
+{
+    int sum = 0;
+    foreach (int item in a)
+    {
+       sum += item;
+    }
+    Console.WriteLine(sum);
+}
+  Employee emp = new Employee();
+  emp.getValue(1,3,34);
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

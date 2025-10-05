@@ -1,0 +1,193 @@
+OOPs :-
+-------
+>> In object oriented programming we focus on object.
+>> OPP's is a approach to promote greater flexibility and maintainability in programming.
+--------------------
+OPP's Concepts:-
+-----------------
+1. Class.
+2. Object.
+
+Pillar's of OPP's
+-----------------
+3. Inheritance 
+4. Data Abstraction.
+5. Encapsulation
+6. Polymorphism
+--------------------------
+1. Class:-
+----------
+>> Class is a user defined data type.
+>> Class is blue print for making a particular kind of object.
+>> Class contain two things:-
+	a) Data Member .[Attribute/Properties] => Variable.[Getter/Setter.]
+	b) Member Function/Method [Behaviour]
+	c) Constructor.
+2. Object:-
+-----------
+>> Object is the real-world [Non-Living + Living] entity.
+>> Object is the container and it can be sharable.
+>> An object must belong to that class.
+-------------------------------------------------
+In C# Class - By Default ->> Internal.
+by Default - Data Member/Method -> Private.
+---------------------------------------------
+
+3. Inheritance :-
+------------------
+>> It is the technique in which object of one class acquire the properties of object of another class.
+>> We can extend the properties in child Class.
+>> Child class always inherit the properties of the parent class.
+>> It provide the idea of Re-usability.
+------------------------------------------
+Type of Inheritance:-
+-------------------------
+1. Single Level Inheritance.
+2. Multiple Inheritance.
+3. Multilevel Inheritance.
+4. Hybrid Inheritance.
+5. Hierarchical Inheritance.
+-----------------------------------
+
+Interface:-
+>> In interface we use interface keyword.
+>> In interface we can only provide method declaration.
+>> Interface is used to achieve Dependency Injection.
+>> DI is used to make your application loosely coupled. 
+>> Interface is just to create contract in your application 
+>> whatever the method you declare inside interface, all the methods must be implemented with their child class.
+>> Inside Interface we can't create Constructor.
+>> Inside Interface we can't create Instance Variable.
+>> Interface can be used to achieve multiple Inheritance.
+----------------------------------------------
+Data Abstraction :-
+--------------------
+>> It refers to the  act of representing essential features only.
+>> Show only Essential things and hide unnecessary information.
+--------------------------------------------------------------
+How to Achieve Data Abstraction in C#:- 
+----------------------------------------
+>> In C# Data Abstraction can be achieved by 'Abstract Class'.
+-----------------------------------------------------------
+Abstract Class :-
+-----------------
+>> Abstract keyword is used to create abstract class/methods.
+>> In abstract class only abstract methods are allowed.
+>> Abstract method doesn't have body[Implementation].
+>> Abstract Class we can create constructor.
+>> In Abstract Class we can create Data Member/Properties.
+>> We can't achieve multiple inheritance through abstract class.
+>> We can't create Instance/Object of abstract class.
+
+-------------------------------------
+Encapsulation :-
+------------------
+>> The wrapping up of data and function into a single unit is known as Encapsulation.
+>> It is also known as 'Data/Information Hiding'.
+-----------------------------------------------------
+How to achieve encapsulation in C#:-
+--------------------------------------
+>> To achieve encapsulation in C# we use the concept of Specifier/modifier. They are as follows:-
+1.Public.
+>> It can be access anywhere in a program [With in same assembly as well as outside assembly].
+-----------------------------------------------------
+2.Private.
+>> It can be access within/inside class only.
+>> Outside class it can't be accessible.
+-----------------------------------------------------
+3.Protected.
+>> It is similar like private.
+>> Protected comes into picture when you perform inheritance.
+>> Protected members/methods cab be accessible outside the class when you perform inheritance. 
+-----------------------------------------------------
+4.Internal.
+>> It is similar to public.
+>> It can be accessible with in only same assembly.
+-----------------------------------------------------
+5.Protected Internal.
+>> as we know Internal can be accessible within same assembly but if you want to access data member/methods outside the assembly then make it protected internal.
+>> You can access protected internal member outside the namespace only when you perform inheritance.
+-------------------------------
+Order of Accessibility of lower to higher :-
+---------------------------------------------
+private -> protected -> internal -> protected internal -> Public.
+
+------------------------------------------------
+4. Polymorphism :-
+---------------
+>> Poly + Morphism
+Many Forms.
+>> It is a Greek term, It is the ability to take more then one forms.
+For example :-
+---------------
+3+5
+3.4+4.5
+"Ram"  + "Shyam"
+-------------------
+Type of Polymorphism :-
+-----------------------
+a) Compile Time Polymorphism/Early Binding.
+>> To achieve compile time polymorphism we use the concept of method Overloading.
+b) Rum Time Polymorphism/Late Binding.
+>> To Achieve Run Time Polymorphism we use the concept of Method Overriding.
+----------------------------------------------------------
+
+1. Method Overloading :-
+----------------------
+>> It is also known as Compile Time Polymorphism or Early Binding.
+>> It is a process in which method name should be same but their argument/parameter should be different.
+
+---------------------------------------------
+2. Method Overriding/Late Binding :-
+-------------------------------------
+>> To achieve run time polymorphism we use the concept of Method Overring.
+>> It is the concept in which method name should be same as well as parameter should also be same.
+-----------------------------
+For Example :-
+---------------
+Father -> transport -> Cycle.
+Son -> transport -> Bike.
+-------------------------------
+In Method Overriding we use the following three keywords:-
+1.virtual. -> It always used in parent class.
+2.override -> It always used in child class.
+3.base -> It is an Optional. with the help of base keyword you can also call parent class behaviour. 
+-----------------------------------------
+Constructor :-
+----------------
+>> A constructor is a special method which contain the same name as of above class. 
+>> It doesn't return any value.
+>> Constructor doesn't have return type.
+>> constructor called automatically when we create an object of a class. 
+-----------------------------------------------------------------------
+Types of Constructor :-
+1. Default Constructor.
+2. Parameterized Constructor.
+3. Copy Constructor.
+4. Private Constructor.
+5. Static Constructor
+---------------------------------
+1. Default Constructor/Non-Parameterized
+>> A constructor which doesn't contain any parameter.
+2. Parameterized Constructor.
+>> which contain any parameter.
+3. Copy Constructor.
+>> A Constructor in which we copy one constructor value into another constructor.
+4. Private Constructor.
+5. Static Constructor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

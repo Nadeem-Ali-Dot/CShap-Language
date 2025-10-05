@@ -1,0 +1,21 @@
+Multithreading :-
+------------------
+Thread:- A thread is a single execution flow of program.
+It can be two types:-
+1. Single Threading -> It allow only one program can execute at a time.
+2. Multithreading -> It allow multiple program can execute simultaneously.
+-------------------------------------------------
+Without Multithreading :-
+p1 -> 4 min -> tt -> 4 min.
+p2 -> 10 min -> tt -> 14 min.
+p3 -> 2 min -> tt -> 16 min.
+----------------------------- 
+
+Thread life cycle :-
+--------------------
+1. start()
+2. sleep()
+3. abort()
+4. terminate()
+5. suspend()
+6. resume().

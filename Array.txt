@@ -1,0 +1,162 @@
+When to use Array?
+>> when a user want to store multiple values into a single variable then we use the concept of array.
+
+Array :-
+---------
+>> An array is a collection of similar type of data items, which takes contiguous memory allocation.
+>> Searching is fast in Array.
+>> Fixed size of item. [Static Memory Allocation].
+>> An Array we can access any element randomly.
+
+int[] a= new int[6] // Array Declaration.
+a => Array Name. [] => subscript. int => datatype
+6 => Size of Array.
+
+Type of Array :-
+-----------------
+1. 1-D
+2. 2-D
+3. Jagged Array.
+------------------
+Array Initialization:-
+----------------------
+int[] a = new int[5] {23,24,23,12,12 };
+Console.WriteLine(a[3]);
+
+for(int i=0; i<5; i++)
+{
+    Console.WriteLine(a[i]);
+}
+---------------------------------------    
+int[] a = new int[] {23,24,23,12,1,134,14134,343,34,14 };
+Console.WriteLine(a[3]);
+
+for(int i=0; i<a.Length; i++)
+{
+    Console.WriteLine(a[i]);
+}
+-----------------------------------
+Array Declaration
+----------------------------
+ int[] a = new int[5];
+ Console.WriteLine("Enter 5 Element: ");
+
+
+ for(int i=0; i<5; i++)
+ {
+     a[i]=Convert.ToInt32(Console.ReadLine());
+ }
+ Console.WriteLine(4);
+ for(int i=0; i < 5; i++)
+ {
+     Console.WriteLine(a[i]);
+ }
+----------------------------------
+Other way and Best
+---------------------
+  Console.WriteLine("Enter Size Of Array: ");
+  int size=Convert.ToInt32(Console.ReadLine());
+  int[] a = new int[size];
+  Console.WriteLine("Enter Element: ");
+ 
+
+  for(int i=0; i<size; i++)
+  {
+      a[i]=Convert.ToInt32(Console.ReadLine());
+  }
+  Console.WriteLine(4);
+  for(int i=0; i < size; i++)
+  {
+      Console.WriteLine(a[i]);
+  }
+-------------------------------------------
+Assignment Of 1-D Array:-
+----------------------------------
+1.wap to Input Array elements and find its sum and average.
+2.wap to input array elements and find the even and odd number and also count total even and odd.
+3.wap to input array elements and search element in given array.
+4.wap to input array elements and find the largest and smallest in given array.
+5.wap to input array and reverse them.
+---------------------------------------------
+2-D Array [Rows and Columns]:-
+--------------------------------
+Initialization:-
+int[,] a = new int[3, 3] { {34,54,67},{12,11,10 },{67,98,90 } };
+
+   for(int i = 0; i < 3; i++)
+{
+    for(int j = 0; j < 3; j++)
+    {
+        Console.Write(" "+a[i,j]);
+    }
+    Console.WriteLine();
+}
+ -------------------------------
+Declaration :-
+---------------------
+int[,] a = new int[3, 3] ;
+Console.WriteLine("Enter 3X3 Elements: ");
+
+for (int i = 0; i < 3; i++) {
+
+    for (int j = 0; j < 3; j++)
+    {
+        a[i, j] = Convert.ToInt32(Console.ReadLine());
+    }
+
+}
+for(int i = 0; i < 3; i++){
+    for(int j = 0; j < 3; j++)
+    {
+        Console.Write(" "+a[i,j]);
+    }
+    Console.WriteLine();
+}
+------------------------------------
+Assignment of 2-D Array:-
+---------------------------
+1.wap to input array elements and find its sun and average.
+2.Wap to input array elements and find the even and add number and also count total even and odd.
+3.wap to input array elements find the transpose it.
+4.wap to input array elements and find the Diagonal of element.
+5.wap to input array elements and find the largest and smallest in given array.
+
+---------------------------------------------------
+3.Jagged Array :-
+-------------------------
+>>It Is also known as  Array of Arrays.
+>>when a user want to store different size of array and merge them to get a single array.
+
+ int[][] a = new int[5][]; // Jagged Array 
+
+ a[0]=new int[5] {1,2,3,4,5};
+ a[1]=new int[3] {3,4,5};
+ a[2]=new int[2] {1,2};
+ a[3]=new int[3] {3,1,2};
+ a[4]=new int[4] {1,2,3,4};
+
+ foreach (int[] arr in a)
+ {
+     foreach (var e in arr)
+     {
+         Console.Write(e+"\t");
+     }
+     Console.WriteLine();
+ }
+
+                     
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+ALTER PROCEDURE [dbo].[udp_BulkEmployeeUploadSAWithEmail2]        
+    @EmployeeData [BulkEmployeeUploadEmail1] READONLY,        
+    @CompanyCode NVARCHAR(100),        
+    @LocationAutoID INT          
+AS        
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        DECLARE @AreaID NVARCHAR(50)
+        SET @AreaID = (
+            SELECT TOP 1 AreaID 
+            FROM mstOPSAreaMaster 
+            WHERE LocationAutoID = @LocationAutoID
+        );
+
+        DECLARE @Department NVARCHAR(50)
+        SET @Department = (
+            SELECT TOP 1 DepartmentCode 
+            FROM mstDepartmentMaster 
+            WHERE CompanyCode IN ('MTS','Milk','FutureZone')
+        );
+
+        -- Temp table for processing
+        SELECT 
+            ROW_NUMBER() OVER (ORDER BY EmpID) AS AutoID,
+            EmpID, 
+            EmpName, 
+            Designation, 
+            Email,
+            CAST(NULL AS NVARCHAR(500)) AS Remark
+        INTO #temp
+        FROM @EmployeeData;
+
+        -- Step 1: Validate Data
+        UPDATE #temp 
+        SET Remark = 'Blank Email ID !!'
+        WHERE ISNULL(Email, '') = '';
+
+        UPDATE t
+        SET Remark = 'Invalid Designation !!'
+        FROM #temp t
+        LEFT JOIN mstDesignation d 
+            ON t.Designation = d.DesignationCode 
+            AND d.CompanyCode IN ('MTS','Milk','FutureZone')
+        WHERE d.DesignationCode IS NULL 
+            AND ISNULL(t.Remark, '') = '';
+
+        UPDATE t
+        SET Remark = 'Email ID already assigned to other employee !!'
+        FROM #temp t
+        INNER JOIN MilkBasketEmployeeEmailMaster e 
+            ON t.Email = e.EmailID
+        WHERE ISNULL(t.Remark, '') = '';
+
+        -- Step 2: MERGE into Employee Master (Insert or Update)
+        MERGE GroupLNewAppEmployeeMaster AS target
+        USING (
+            SELECT * FROM #temp WHERE ISNULL(Remark, '') = ''
+        ) AS source
+        ON LOWER(target.EmpID) = LOWER(source.EmpID)
+           AND target.LocationAutoID = @LocationAutoID
+        WHEN MATCHED THEN
+            UPDATE SET 
+                target.EmpName = source.EmpName,
+                target.Designation = source.Designation
+        WHEN NOT MATCHED BY TARGET THEN
+            INSERT (
+                EmpID, EmpName, DOB, DOJ, Designation, Department, AreaID,
+                ContactNo, CompanyCode, LocationAutoID, ModifiedDate, IsActive
+            )
+            VALUES (
+                source.EmpID, 
+                REPLACE(LTRIM(RTRIM(source.EmpName)), CHAR(13) + CHAR(10), ''),
+                '1994-08-19', GETDATE(), source.Designation, @Department,
+                @AreaID, '', @CompanyCode, @LocationAutoID, GETDATE(), 1
+            );
+
+        -- Step 3: Mark Result Status
+        UPDATE t
+        SET Remark = CASE 
+            WHEN e.EmailID IS NULL THEN 'Success'
+            ELSE 'Details Updated !!'
+        END
+        FROM #temp t
+        LEFT JOIN MilkBasketEmployeeEmailMaster e 
+            ON t.Email = e.EmailID
+        WHERE ISNULL(t.Remark, '') = '';
+
+        -- Step 4: Insert into Email Master
+        INSERT INTO MilkBasketEmployeeEmailMaster (EmpID, EmailID)
+        SELECT t.EmpID, t.Email
+        FROM #temp t
+        LEFT JOIN MilkBasketEmployeeEmailMaster e 
+            ON t.Email = e.EmailID
+        WHERE ISNULL(t.Remark, '') = 'Success';
+
+        -- Final Result
+        SELECT EmpID, EmpName, Designation, Email, Remark 
+        FROM #temp
+        WHERE Remark != 'Success';
+
+        DROP TABLE #temp;
+
+        COMMIT TRANSACTION;
+    END TRY
+
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+
+        -- Optional: Log the error here to a table
+        DECLARE @ErrMsg NVARCHAR(MAX), @ErrSeverity INT, @ErrState INT;
+        SELECT 
+            @ErrMsg = ERROR_MESSAGE(), 
+            @ErrSeverity = ERROR_SEVERITY(), 
+            @ErrState = ERROR_STATE();
+
+        RAISERROR(@ErrMsg, @ErrSeverity, @ErrState);
+    END CATCH
+END

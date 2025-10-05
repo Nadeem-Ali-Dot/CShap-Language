@@ -1,0 +1,115 @@
+Middleware in Dot Net Core:-
+------------------------------
+>> A middleware is a series of software component that handle all request and response.
+>>It is also responsible to show how an application look when there is an error.
+>>A middleware assemble into an http request pipeline.
+
+There are two methods to create middleware:
+1. app.run() => It doesn't run next middleware
+2.app.use() => It is responsible to run next middleware.
+>> It has next() method. 
+----------------------------------------
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("First middleware");
+    await next();
+});
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("Second Middleware");
+});
+
+-----------------------------------------------
+Routing in Core :-
+--------------------
+>> Routing is a mechanism that inspect all the incoming/http request and map that request to the controller with their action methods.
+>> Routing decide the path where you want to reach.
+-------------------------------------------------
+Type of Routing :-
+-------------------
+1. Conventional Based Routing :-
+     a) app.MapDefaultControllerRoute(). // Home/Index
+ 
+     b) app.MapControllerRoute(name: "default",
+          pattern: "{controller=Admin}/{action=Login}/{id?}");
+-------------------------------------------------------------
+2.Attribute Based Routing.
+>> Mostly used in API.
+>> [Route] attribute is used to perform attribute based routing.
+  a) Action Level.
+   >> [Route("~/")]
+   >> [Route("Home/Index")]
+   >> [Route("Home")]
+  b) Controller Level.
+    >> [Route("Home")]
+  c) Token Level
+    >> [Route("[Controller]/[Action]")]
+-----------------------------------------------------
+State Management  :-
+>> Web application use http protocol.
+>> Http is stateless protocol.
+>> It doesn't maintain the communication between client and server then we use the concept of state management technique.
+
+There are two types of state management:-
+a) Client side state management.
+   1) Cookies.
+>> Cookies is used to store small piece of data at client machine.
+>> It hold about 4k [It depend upon browser to browser].
+>> It hold only string data.
+>> The default time of cookies is 30 min.
+   How to Write Cookie:
+   CookieOptions cookie =new CookieOptions();
+   Response.Cookies.Append("Key", "Value",cookie);
+   How to Read Cookie:
+    string Name = Request.Cookies["Key"].ToString();
+There are two types of cookies:-
+a) Non-Persistent Cookies
+---------------------------
+>> It store client information on a temporally basis.
+>> When you turn off your computer or close the browser window your cookie information automatically gets deleted from the web browser.
+b) Persistent Cookies.
+>> It store client information on a permanent basis.
+>> when you turn off your computer or close the browser your cookies information doesn't deleted from the web browser.
+ How to Write Cookie:
+   CookieOptions cookie =new CookieOptions();
+   cookie.Expire=DataTime.Now.AddDays(7);
+   Response.Cookies.Append("Key", "Value",cookie);
+   How to Read Cookie:
+    string Name = Request.Cookies["Key"].ToString();
+
+   2) ViewBag.
+>> ViewBag is used to transfer small piece of information between controller to View.
+>> ViewBag is a dynamic property.
+>> ViewBag doesn't require to casting for complex datatype.
+>> ViewBag Doesn't show compile time error, it always run time error.
+>> The life cycle of viewbag is current http request only.
+Syntax: ViewBag.Name="";
+
+   3) ViewData.
+>> ViewData is used to transfer small piece of information between controller to View.
+>> ViewData inherits from ViewDataDictionary.
+>> ViewData  require type casting for complex datatype.
+>> ViewData Doesn't show compile time error, it always run time error.
+>> The life cycle of ViewData is current http request only.
+Syntax: ViewData["Name"]="";
+
+   4) Tempdata.
+ >> Tempdata is used to transfer small piece of information between controller to View.
+>> Tempdata inherits from TempdataDictionary.
+>> Tempdata  require type casting for complex datatype.
+>> Tempdata Doesn't show compile time error, it always run time error.
+>> The life cycle of Tempdata is one subsequent request to another subsequent request.
+Syntax: Tempdata["Name"]="";
+------------------------------------
+b) Server side state management.
+   i) Session.
+
+
+
+
+
+
+
+
+

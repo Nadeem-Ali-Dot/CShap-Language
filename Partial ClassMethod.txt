@@ -1,0 +1,41 @@
+Partial Class/Method 
+------------------------
+Partial Class:-
+------------------
+🧩 What is a Partial Class in C#?
+
+>>A partial class in C# allows you to split the definition of a class, struct, or interface across multiple files. At compile time, all the parts are combined into a single class.
+
+This feature is useful for:
+----------------------------
+>> Keeping large classes manageable
+>> Separating auto-generated code from custom logic
+>> Working in team environments where multiple developers can edit different parts of the same class
+
+public partial class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+}
+
+public partial class Person
+{
+    public string GetFullName()
+    {
+        return $"{FirstName} {LastName}";
+    }
+}
+------------------------------------------
+Partial Method :-
+------------------
+>> Inside partial class we create partial method.
+>> Partial method has no definition, definition can be defined other partial class.
+>> Partial method has no return type. (void)
+>> by default partial method has private.
+---------------------------------------------
+
+
+
+
+
+

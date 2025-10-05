@@ -1,0 +1,194 @@
+Collection Classes :-
+----------------------
+>> It contains multiple items.
+>> On the basic of categorization it can be divided into two parts:-
+
+a) Non-Generic Classes.
+>> The namespace can be used here.  Using System.Collections
+>> It contains any type of element together.
+In Non-Generic we have following classes:
+	1. Array List.
+	2. HashTable. 
+	>> It store value in key-value pair.
+	>> Key must be Unique.
+	3. Shorted List.
+	>> It store value in key-value pair.
+	>> Key must be similar datatype.
+	>> It access value in ascending order.
+	4. Stack.
+	>> It implements LIFO[Last In First Out] technique.
+	>> To perform Insert Operation in stack we use push().
+	>> To perform Remove Operation in stack we use pop().
+	5. Queue.
+	>> It implements FIFO[First In First Out] technique.
+	>> To perform Insert Operation in stack we use enqueue().
+	>> To perform Remove Operation in stack we use dequeue().
+b) Generic Classes.
+>> The namespace can be used here.  Using System.Collections.Generic
+>> It contains only similar type of element together.
+In Generic we have following classes:
+	1. List.
+	2. Dictionary. 
+	3. Shorted List.
+	4. Stack.
+	5. Queue.
+	6. HashSet. // show only non-duplicate value
+---------------------------------------------------------
+1. Array List.
+----------------
+ArrayList al = new ArrayList();
+al.Add(1);
+al.Add("C#");
+al.Add("Java");
+al.Add(2.3232);
+al.Add(true);
+
+foreach (object item in al)
+{
+    Console.WriteLine(item);
+}
+------------------------------------------------------
+2. HashTable. 
+------------------------------------------------------
+Hashtable ht = new Hashtable();
+ht.Add("Game", "Football");
+ht.Add(2, true);
+ht.Add(true, true);
+ht.Add(3, "Football");
+
+foreach (DictionaryEntry dt in ht) {
+    Console.WriteLine("key="+dt.Key+" Value="+dt.Value);
+
+}
+------------------------------------------------------
+3. Shorted List.
+---------------------
+>>key Must be similar type.
+ SortedList st = new SortedList();
+st.Add("Game", "Football");
+st.Add("4", true);
+st.Add("2342", true);
+st.Add("23", "Football");
+
+foreach (DictionaryEntry dt in st) {
+    Console.WriteLine("key="+dt.Key+" Value="+dt.Value);
+
+}
+-----------------------------------------------------------
+4. Stack.
+----------------------------
+Stack stack = new Stack();
+stack.Push(34);
+stack.Pop();
+stack.Push("C#");
+stack.Push(true);
+stack.Push(DateTime.Now);
+foreach (object item in stack)
+{
+    Console.WriteLine(item);
+}
+-----------------------------------------------
+5. Queue.
+--------------------
+Queue queue = new Queue();
+queue.Enqueue(1);
+queue.Enqueue(2);
+queue.Enqueue(3);
+queue.Dequeue();
+foreach (var item in queue)
+{
+    Console.WriteLine(item);
+}
+----------------------------------------
+Generic Collection :-
+------------
+1. List.
+-------------------
+ List<string> list = new List<string>();
+ list.Add("C#");
+ list.Add("Java");
+ list.Add("1");
+ list.Add("True");
+ foreach (string item in list)
+ {
+     Console.WriteLine(item);
+ }
+-----------------------------
+2. Dictionary. 
+----------------------
+ Dictionary<int,string> dict=new Dictionary<int, string>();
+  dict.Add(1, "C#");
+  dict.Add(2, "Java");
+  dict.Add(3, "Python");
+  foreach (KeyValuePair<int,string> kp in dict)
+  {
+      Console.WriteLine("Key="+kp.Key+"Value="+kp.Value);
+  }
+---------------------------------------------------------
+3. Shorted List.
+----------------------
+SortedList<int,string> st=new SortedList<int,string>();
+  st.Add(1, "Value1");
+  st.Add(2, "Value2");
+  st.Add(3, "Value3");
+  st.Add(4, "Value4");
+  foreach (KeyValuePair<int,string> sr in st)
+  {
+      Console.WriteLine(sr.Key 
+          +" "+sr.Value);
+  }
+--------------------------
+4. Stack.
+-------------
+Stack<int> st=new Stack<int>();
+  st.Push(1);
+  st.Push(2);
+  st.Push(3);
+  st.Push(4);
+  st.Pop();
+  st.Push(5);
+  foreach (int value in st)
+  {
+      Console.WriteLine(value);
+  }
+-------------------------------
+5. Queue.
+----------
+Queue<string> queue = new Queue<string>();
+  queue.Enqueue("A");
+  queue.Enqueue("B");
+  queue.Enqueue("C");
+  queue.Enqueue("D");
+  queue.Dequeue();
+  queue.Enqueue("E");
+  foreach (string item in queue)
+  {
+      Console.WriteLine(item);
+  }
+----------------------------------
+6. HashSet.
+------------
+HashSet<int> hs = new HashSet<int>();
+  hs.Add(1);
+  hs.Add(2);
+  hs.Add(2);
+  hs.Add(3);
+  hs.Add(4);
+  hs.Add(4);
+  foreach (int item in hs)
+  {
+      Console.WriteLine(item);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+

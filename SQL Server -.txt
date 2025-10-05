@@ -1,0 +1,188 @@
+DBMS:-
+-------
+MS-Access, MySQL, SQL Server, Oracle, PostgreSQL, MongoDB, Db2, SYbase, SQLite etc.
+-----------------------------------
+SQL Server :-
+--------------
+>> It stands for structure query language.
+>> It is a Relational database language [RDBMS] that is use to create tables, views, stored procedure is your database.
+>> It support both GUI and CUI based interface.
+>> It is a platform dependent. [Install only windows O.S].
+>> It is not open source and cross platform.
+>> It is very widely used to access database and perform database related operations in a very effective and efficient manner
+
+------------------------------------------------------
+Database:- It is a collection of interrelated data or It is a collection of table.
+----------------------------------------------
+Database Terminology:-
+---------------------
+1. Table - Relation 
+2. Row - Tuple
+3. Column - Attribute
+4. Degree - No. of Column.
+5. Cardinality - No. of Rows.
+----------------------------
+Database Language :-
+----------------------
+1.DDL
+>> Data Definition language. 
+>> Create, alter, drop, truncate, rename, comment.
+2.DML
+>> Data Manipulation language.
+>> Insert, Update, delete.
+3.DCL
+>> Data control language
+>> Grant, Revoke.
+4.TCL
+>> Transaction Control Language.
+>> Begin Transaction, commit, Rollback, savepoint.
+5.DQL
+>> Data Query Language.
+>> Select.
+----------------------------------
+SQL - GUI.
+1. Database
+2. Table 
+------------------------------
+Primary Key:-
+----------------
+>> It is uniquely identify of your table data.
+>> It doesn't allow null and duplicate value.
+
+------------------
+Command to Insert Records:-
+---------------------------
+1. Insert into all Column
+Insert into tablename values(value1,value2,....)
+2. Insert into specific Column.
+Insert into tablename(col_name,...)values(col_value,...)
+-----------------------------------------
+Truncate vs Delete:
+1. Truncate - DDL
+>> It doesn't allow to delete specific record.
+>> Where Condition in not allowed.
+>> Truncate reset the identity value
+
+2. Delete DML
+>> It allow to delete specific record.
+>> Where condition is allowed.
+>> delete not reset the identity value
+
+Drop:-
+>> DDL
+>> It delete the whole schema of table
+
+Operators in SQL Server :-
+----------------------------
+1. Arithmetic Operator.
++,-,*,/,%
+2. Relational Operator.
+>, <, >=,<=, <> or !=
+3. Logical Operator.
+>> And, or, not
+-------------------
+Special Operator :-
+in
+not in
+between
+not between
+top
+order by - to give asc or desc
+like -> It is used for pattern matching and searching purpose.
+_ Underscore -> It read one character at a time.
+% Percentage -> It read multiple character at once.
+-----------------------
+Aggregate Function:-
+-----------------------
+1. max.
+2. min.
+3. avg.
+4. sum
+5. count.
+------------------------------
+Clauses in SQL server
+-----------------------
+1. where
+>> where we can use before group by.
+2. order by
+----------------
+Note: Group by and having must use aggregate function.
+3. Group by
+4. having
+
+------------------------------------------------
+Set Operators:-
+-----------------
+It is used to fetch the record from multiple tables.
+1. Column name should be same of both the table.
+2. order of column must be same of both the table.
+3. Data type must be same of both the table.
+-------------------------------------------
+They are as follows:-
+1. Union -> It doesn't  give duplicate record from the table.
+2. Union All ->  It give duplicate record from the table.
+3. Intersect -> provide common records.
+4. Except -> All record from table1 that doesn't exist n table2
+
+----------------------------
+Relationship in SQL server:-
+----------------------------
+1. One to One. [Student - Personal Details]
+2. One to Many or Many to One [Student - Payment details].
+3. Many to Many [Student - Course]
+
+-------------------------------
+Joins in SQL server
+----------------------
+>> It is used to fetch the record from multiple tables.
+Types of Join:-
+------------------
+1. Inner Join.
+>> it is used to get common record from multiple tables.
+2. Outer Join.
+>> It retrieve matching and unmatching both records from multiple tables.
+
+	a) Left Outer Join
+	>> It return all record from left table and 	matching record from right table unmatched 	return null.
+
+	b) Right Outer Join
+	It return all record from right table and 	matching record from left table unmatched 	return null.
+
+	c) Full Outer Join
+	>> It return all record from both table, 	unmatched return null
+
+3. Cross Join
+>> M*N
+>> it find product of both table.
+>> select * from table1 cross join table2
+
+4. Self Join
+>> Joining a table itself is called self join
+------------------------------------------
+Stored Procedure :-
+---------------------
+>> SP is a pre-compile database object.
+>> SP helps to improve the performance of our database.
+>> SP provide security to our database.
+>> SP prevent SQL Injection.
+>> SP helps to write Parameterized Query.
+>> SP have input and output parameter.
+>> SP return multiple values.
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

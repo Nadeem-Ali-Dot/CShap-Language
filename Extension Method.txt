@@ -1,0 +1,43 @@
+Extension Method
+----------------
+>> To add something.
+>> If you  want to add some method in your existing class without creating new class then we use the concept of extension method.
+>> It is represented by downward arrow keys.
+How to create Extension method in C# :-
+----------------------------------------
+Wap to create extension method 
+
+ static class convertUpper
+ {
+     public static string ConvertUpper(this string input)
+     {
+         if (input == null || input.Length == 0)
+         {
+             return null;
+         }
+         else
+         {
+             return input.ToUpper();
+         }
+     }
+ }
+
+ string name = convertUpper.ConvertUpper("abc");
+ Console.WriteLine(name);
+
+-----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

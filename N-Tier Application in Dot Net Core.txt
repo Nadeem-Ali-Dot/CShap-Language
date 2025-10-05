@@ -1,0 +1,6 @@
+N-Tier Application in Dot Net Core using ADO.net Connectivity:-
+---------------------------------------------
+
+CommanLayar =>> Model/Properties.
+DataAccessLayar =>> Database Connectivity,
+BAL => Contract, Services.

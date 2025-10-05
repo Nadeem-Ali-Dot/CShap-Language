@@ -1,0 +1,62 @@
+File Handling :-
+-------------------
+File -> It is used for keeping a record.
+>> In file we store value in permanent retention.
+>> In file we can store huge amount of data.
+>> In file we can also work with previous value.
+--------------------------------------------------
+In file handling you need to perform the following two operation:-
+1. Writing a File.
+2. Reading a file.
+---------------------
+All file handling related classes is defined into system.io namespace.
+----------------------
+StreamWriter => For writing a file
+StreamReader => For reading a file
+
+Note:-
+---------
+>> When you open a file in writing purpose then if file doesn't exist, program will create automatically.
+>> When you open a file in reading purpose then if file doesn't exist, program will not create automatically, therefore in reading a file be there otherwise you will get FileNotFound Exception
+
+Wap to write a file :-
+----------------------
+ string[] Name = { "C#", "Java", "Python", "JavaScript", "Kotlin", "C++", "C" };
+ using (StreamWriter sw = new StreamWriter("D:\\Nadeem Ali\\Learning\\Create.txt"))
+ {
+     foreach (var item in Name)
+     {
+         sw.WriteLine(item);
+     }
+
+ }
+-----------------------------
+Wap to read a file :-
+-----------------------
+ string[] Name = { "C#", "Java", "Python", "JavaScript", "Kotlin", "C++", "C" };
+ string readFile;
+ using (StreamReader rw = new StreamReader ("D:\\Nadeem Ali\\Learning\\Create.txt"))
+ {
+    readFile= rw.ReadLine();
+     while (readFile !=null) {
+         Console.WriteLine(readFile);
+         readFile = rw.ReadLine();
+     
+     }
+
+
+ }
+
+---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

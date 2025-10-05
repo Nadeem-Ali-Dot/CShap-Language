@@ -1,0 +1,48 @@
+Non-Static Vs Static Methods:-
+---------------------------------
+
+Non-Static :-
+--------------
+>> A method which can be called with the help of object reference.
+>> It takes more memory in your application.
+>> Performance Slow.
+>> Non-static method every time create separate memory allocation to store a value.
+
+--------------------------------------
+Static :-
+--------------
+>> Static method/variable defined by static keyword. 
+>> in static  method only you can use static properties/variable.
+>> A method which can be called with the help of Class Name.
+>> static method doesn't require object reference.
+>> It takes less memory in your application.
+>> It create single copy/memory in your application.
+>> Performance high.
+>>static method doesn't create separate memory allocation to store a value.
+
+----------------------------------------
+Assembly :-
+------------
+>> It is an important concept in C#.
+>> It contain compiled classes.
+>> It is used for unit of deployment.
+--------------------------------------
+There are two types of Assembly in C#:
+1. Public/Shared Assembly.
+>> Which can be shared.
+>> The file extension of shared Assembly is .dll [Dynamic Link Library] => Class Library
+2. Private Assembly
+---------------------
+>> Which can't be Shared.
+>> The file extension of private Assembly is .exe[Executable] --> window Application.
+
+
+
+
+
+
+
+
+
+
+

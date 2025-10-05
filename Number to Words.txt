@@ -1,0 +1,68 @@
+const ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",];
+const teens = ["Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",];
+const tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety",];
+const thousands = ["", "Thousand", "Lakh", "Crore"];
+
+function numberToWords(num) {
+    if (num === "0") return "Zero";
+
+    let numStr = num.toString();
+    let word = "";
+    let n = numStr.length;
+
+    if (n > 9) return "overflow"; // number out of bounds
+
+    // Pad the number with leading zeros for easier parsing
+    numStr = numStr.padStart(9, "0");
+
+    // Split the number into groups of two
+    let crore = numStr.slice(0, 2);
+    let lakh = numStr.slice(2, 4);
+    let thousand = numStr.slice(4, 6);
+    let hundred = numStr[6];
+    let ten = numStr.slice(7);
+
+    if (parseInt(crore) > 0) {
+        word += `${convertTwoDigits(crore)} Crore `;
+    }
+    if (parseInt(lakh) > 0) {
+        word += `${convertTwoDigits(lakh)} Lakh `;
+    }
+    if (parseInt(thousand) > 0) {
+        word += `${convertTwoDigits(thousand)} Thousand `;
+    }
+    if (parseInt(hundred) > 0) {
+        word += `${ones[hundred]} Hundred `;
+    }
+    if (parseInt(ten) > 0) {
+        word += convertTwoDigits(ten);
+    }
+
+    return word.trim();
+}
+
+function convertTwoDigits(num) {
+    num = parseInt(num, 10);
+    if (num < 10) return ones[num];
+    if (num > 10 && num < 20) return teens[num - 11];
+    let unit = num % 10;
+    let ten = Math.floor(num / 10);
+    return `${tens[ten]} ${ones[unit]}`.trim();
+}
+
+function convertRupeesPaise(amount) {
+    let [rupees, paise] = amount.toString().split(".");
+
+    let rupeesInWords = numberToWords(parseInt(rupees));
+    let paiseInWords = paise ? convertTwoDigits(paise.padEnd(2, "0")) : "";
+
+    let result = "";
+    if (rupeesInWords) {
+        result += `${rupeesInWords} Rupees`;
+    }
+    if (paiseInWords) {
+        result += ` and ${paiseInWords} Paise`;
+    }
+
+    return result.trim();
+}
