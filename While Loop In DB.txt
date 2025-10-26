@@ -1,0 +1,42 @@
+select ROW_NUMBER() over (order by a.siteid)autoid, a.siteid,a.customerid as CustomerId,rs.RouteName, rs.RouteCode,sm.ShiftName +' ('+sm.ShiftInTime+' - '+sm.ShiftOutTime+')' as ShiftTime,sm.Shift_Id as ShiftId, +' ('+f.StartTime+' - '+f.EndTime+')' as BeatName,f.StartTime ,f.EndTime, f.Id as BeatId,
+CASE 
+        WHEN tt.PostId IS NULL THEN 'Pending'
+       else  'Completed' 
+   END AS Status ,
+   0 as Flag
+   
+   into #temp
+   
+   from EmployeeCustomerMapping a join RouteBeatAssign  b on a.routeid=b.routeid and a.ShiftId = b.ShiftId and a.customerid=b.CustomerId and a.siteid=b.SiteId join FrequencyOfRoute f on b.routeid=f.RouteCode and b.ShiftId=f.ShiftId and b.CustomerId=f.CustomerId and b.SiteId=f.SiteId  join RouteMaster rs on a.routeid=rs.RouteId join ShiftMaster sm on a.shiftid=sm.Shift_Id left join inserttour tt on rs.routecode = tt.routecode and rs.PostId=tt.PostId and a.empid=tt.EmmployeeId and a.ShiftId=tt.ShiftId and a.customerid=tt.CustomerId and cast(tt.EntryDate as date) = cast(GETDATE() as date) and f.Id=tt.BeatId 
+
+   --select  * from #temp
+
+   Declare @Count int,@initialCounter int=1
+      set @Count=(select COUNT(*) from #temp)
+
+   while (@initialCounter <= @Count)
+   BEGIN
+ Declare @Loopsiteid nvarchar(50);
+ Declare @LoopRouteCode nvarchar(50);
+Declare @LoopShiftid nvarchar(50);
+Declare @LoopBeatid nvarchar(50);
+Declare @Loopcustomerid nvarchar(50);
+
+set @LoopBeatid=(select Beatid from #temp where autoid=@initialCounter)
+set @LoopRouteCode=(select RouteCode from #temp where autoid=@initialCounter)
+set @LoopShiftid=(select ShiftId from #temp where autoid=@initialCounter)
+set @Loopsiteid=(select siteid from #temp where autoid=@initialCounter)
+set @Loopcustomerid=(select CustomerId from #temp where autoid=@initialCounter)
+
+--select @LoopBeatid,@Loopcustomerid,@LoopRouteCode,@LoopShiftid,@Loopsiteid 
+if exists (select '*' from InsertTour where SiteId=@Loopsiteid and CustomerId=@Loopcustomerid and ShiftId=@LoopShiftid and RouteCode=@LoopRouteCode and BeatId=@LoopBeatid and CONVERT(varchar(12),EntryDate,106) =CONVERT(varchar(12),GETDATE(),106))
+Update #temp set Flag=1 where autoid=@initialCounter
+
+
+   set @initialCounter=@initialCounter+1;
+   END
+
+
+   select* from #temp
+
+   drop table #temp

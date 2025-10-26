@@ -157,8 +157,14 @@ Types of Join:-
 >> select * from table1 cross join table2
 
 4. Self Join
->> Joining a table itself is called self join
+>> Joining a table itself is called self join.
+>> No of Alias we create duplicate table. 
 ------------------------------------------
+Wap to get the employee whose salary is same as ajay and mahi
+
+select b.name,b.salary    from tbl_employee a, tbl_employee b where a.salary=b.salary and a.name in ('ajay','mahi')
+
+
 Stored Procedure :-
 ---------------------
 >> SP is a pre-compile database object.
@@ -169,11 +175,161 @@ Stored Procedure :-
 >> SP have input and output parameter.
 >> SP return multiple values.
 ------------------------------------------------
+SP have two categories:-
+a) Without parameter.
+Syntax:- 
 
+create proc/procedure proc_name
+as
+begin
+<Query Statement>
+end
+----------------------
+Run Procedure:-
+exec/execute proc_name
+--------------------------
 
+b) With Parameter :-
+-------------------
+create proc proc_name(
+@parameter1 datatype,
+@parameter2 datatype,
+@parameter3 datatype,
+)
+as
+begin
+<Query Statement>
+end
 
+----------------------
+Function in Sql Server :-
+-----------------------
+1) Scalar Valued Function.
+>> It retrun single Value.
+syntax:-
+---------
+create function function_name(@paramter1 datatype)
+returns datatype/variable
+as
+begin
+<Query Statement>
+return final_value
+end
+-------------
+Run :-
+------------
+select function_name(@paramter1,..)
+---------------------------
 
+2)Table valued function
+>> It return whole table.
+>> begin and end is not required.
+>> Multiple value retrurn.
+Syntax:-
+-------
+create function function_name(@paramter1 datatype)
+return table
+as
+retrun (<Query Statement>)
 
+-----------------------------
+Views :-
+----------
+>> A view as a temporarily/virtual table, it make your query faster.
+>> It is used to fetch data in a fast manner.
+syntax:-
+--------
+create view view_name
+as 
+select  * from <TN>
+-----------------------------------
+Index :-
+--------
+>> It is used to make your searching faster.
+Type of index:-
+--------------------
+1) Clustered Index.
+>> When you make any column as p.k then it by default become clustered index.
+>> There is only one clustered index in a table.
+
+How to create Clustered Index Manually :-
+create clustered index Index_name on tablename (column asc/desc)
+-----------------------------------------------
+2) Non-Clustered Index.
+>> There is more one clustered index in a table.
+
+create nonclustered index Index_name on tablename (column asc/desc)
+-----------------------------------
+
+How to delete index 
+---------------------
+drop index index_name on table_Name
+---------------------------------------
+
+Trigger :-
+-----------
+>> A trigger is special kind of store procedure that automatically fired when an event has occurred.
+
+Database Event :- 
+Create, alter, drop, insert, update, delete etc.
+Student ->> when new student inserted then in notification table just after one record has been inserted automatically.
+Notification ->> I don't want to insert manually record in this table.
+-----------------------------
+Syntax :-
+create trigger triggerName
+on tablename 
+for insert -- After timing
+as
+begin 
+declare @id int
+select @id=id from inserted --It keeps this id behind the scene.
+insert into table(Mess) values('The student with Id'+@id+' has been added in the following '+GETDATE())
+end
+
+Note :- 
+for/After :- After timing.
+INSTEAD OF : Before timing.
+----------------------------------------------
+INSERTED is a special pseudo-table that holds the new rows.
+Similarly, DELETED holds old rows (before update or delete).
+-----------------------------------------------------------------
+Nested Query
+--------------
+>> Query within Query is called nested query.
+select * from <TN> where CalName=(select * from TN where calname=(select * from TN))
+1. Non-corelated :-
+------------------
+ a) First inner query will execute then outer query run.
+ b) The Result of outer query is depend on inner query.
+
+-- wap to find the 1st highest salary of an employee.
+
+select * from employees where salary=(select max(salary) from employees)
+
+-- wap to find the 2st highest salary of an employee.
+select * from employees where salary=(select max(salary) from employees where salary <(select max(salary) from employees))
+
+Non-Corelated :-
+-----------------
+1st Highest -> No of Subquery => 2
+2nd Highest => (N+1) => 3
+3rd Highest => (N+1) => 4
+45th Highest => (N+1) => 46 Subquery
+-----------------------------------------
+
+2. Corelated :-
+---------------
+a) First outer query will execute then inner query run.
+b) The result of inner query is depend on outer query.
+-------------------------------------------------------
+Syntax:-
+------------
+select * from TN TableNameAlias1
+where N-1=select count(columnname) from TN TableNameAlias2 where TableNameAlias2.colname(>/<)TableNameAlias1.calname
+> => Highest
+< => Lowest
+----------------------------
+select * from Employees t1 where 6-1 =(select  COUNT(distinct salary) from Employees t2 where t2.salary > t1.salary )
 
 
 

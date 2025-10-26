@@ -104,6 +104,11 @@ Syntax: Tempdata["Name"]="";
 ------------------------------------
 b) Server side state management.
    i) Session.
+>> Session is used to keep your data throughout whole application.
+>> Session is a heavy weight.
+>> Session can store any type data.
+>> the Default time of session is 20 min.
+>> We can increase or decrease session time.
 
 
 
