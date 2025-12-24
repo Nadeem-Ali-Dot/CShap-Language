@@ -1,0 +1,16 @@
+select ROW_NUMBER() over(order by id ) rno,invoiceno,centerpoint,materialname,modelno,rate,customer,qty,date into #temp from tmp
+
+declare @counter int =1
+while(@counter <= (select count(*) from tmp))
+begin
+
+
+INSERT INTO MaterialIn(CenterPoint,EquipmentList,QuantityReceived,Date,InvoiceNo,ModelNo,rate,totalPrice,customer,entrydate)  select centerpoint,materialname,qty,date,invoiceno,modelno,rate,(rate*qty),customer,date  from #temp where rno=@counter
+
+      declare @id int;
+		set @id=SCOPE_IDENTITY();
+		Insert into logs_table(InautoId,MaterialName,modelNO,Qty,Date,Status,Rate) select @id,materialname,Modelno,qty,date,'StockIn',rate from #temp where rno=@counter
+
+
+set @counter =@counter+1
+end

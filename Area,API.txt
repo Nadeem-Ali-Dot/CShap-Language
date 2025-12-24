@@ -1,0 +1,66 @@
+Area :-
+--------
+>> Area allows you to separate your modules and organize model.
+>> When we have large enterprise application then we use the concept of area.
+For Ex.
+Admin
+IT
+Payroll
+HR
+Inventory
+-------------------------------------------------------
+Rest API In Dot Net Core :-
+-----------------------------
+Rest API
+----------
+>> API is neither a technology nor a framework, It is a concept.
+>> API is used to communicate having different environments [cross platform].
+>> API generally return JSON [JavaScript Object Notation].
+>> API is nothing it is just a Method.
+------------------------------------------------------------
+Rest:-
+--------
+>> It stands for 'Representational State Transfer'.
+>> Rest is a Communication protocol under which our API will run.
+--------------------------------------------------------------------
+JSON Format :-
+----------------
+{
+"Name":"ABC",
+"age":23,
+"Gender":"Male"
+
+}
+-----------------------------
+In API you need to learn the following three things :-
+1.Creating An API
+2.Testing An API =>> Postman/Swagger/fiddler.
+3. Consume an API
+
+---------------------------------------
+How to create an API in dot net core :-
+---------------------------------------------
+Select ->>> ASP.net Core Web API => select this template for creating api in core.
+-----------------------
+In api we have http verb :-
+--------------------------------
+C -> Create -> API -> Post [Http verb]
+R -> Read -> API -> Get [Http verb]
+U -> Update -> API -> Put [Http verb]
+D -> Delete -> API -> Delete [Http verb]
+--------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
